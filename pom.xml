@@ -11,7 +11,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.6.RELEASE</version>
+		<version>2.1.4.RELEASE</version>
 		<relativePath /> 
 	</parent>
 
@@ -21,6 +21,18 @@
 
 	<dependencies>
     	
+		<!-- Spring Web dependencies -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-web</artifactId>
+		</dependency>
+		
+		<!-- Spring Web MVC dependencies -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		</dependency>
+		
 		<!-- Thymeleaf dependencies -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -40,6 +52,7 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
+		
 	</dependencies>
 		
 	<build>
