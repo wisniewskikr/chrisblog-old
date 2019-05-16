@@ -1,8 +1,9 @@
-package pl.kwi.springboot.commands;
+package pl.kwi.chrisblog.commands;
 
 import java.io.Serializable;
 
-public class InputCommand implements Serializable{
+
+public class OutputCommand implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	

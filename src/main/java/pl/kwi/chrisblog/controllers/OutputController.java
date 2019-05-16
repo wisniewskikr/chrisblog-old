@@ -1,4 +1,4 @@
-package pl.kwi.springboot.controllers;
+package pl.kwi.chrisblog.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import pl.kwi.springboot.commands.OutputCommand;
-import pl.kwi.springboot.services.NameService;
+import pl.kwi.chrisblog.commands.OutputCommand;
+import pl.kwi.chrisblog.services.NameService;
 
 
 @Controller

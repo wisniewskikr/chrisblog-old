@@ -1,4 +1,4 @@
-package pl.kwi.springboot.services;
+package pl.kwi.chrisblog.services;
 
 import java.util.Properties;
 
