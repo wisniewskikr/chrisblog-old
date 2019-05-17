@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value="/user")
-public class UserTypeController {
+@RequestMapping(value="/home")
+public class HomeController {
 	
 	private final static String[] TOPICS = {"dance", "it"};
 	
@@ -20,7 +20,7 @@ public class UserTypeController {
 
 	@RequestMapping
 	public String displayPage() {
-		return "navigation/userType";
+		return "navigation/home";
 	}
 
 

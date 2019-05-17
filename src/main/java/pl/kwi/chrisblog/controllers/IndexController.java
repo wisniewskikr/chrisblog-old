@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping(value="/")
-public class InitController {
+public class IndexController {
 
 	@RequestMapping
 	public String index() {
-		return "redirect:user";
+		return "redirect:home";
 	}
 	
 }
