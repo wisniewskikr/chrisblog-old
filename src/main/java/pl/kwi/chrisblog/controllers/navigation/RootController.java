@@ -5,11 +5,11 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping(value="/home")
-public class HomeController {
+public class RootController {
 	
 	private final static String[] TOPICS = {"dance", "it"};
 	
@@ -18,9 +18,9 @@ public class HomeController {
         return Arrays.asList(TOPICS);
     }
 
-	@RequestMapping
-	public String displayPage() {
-		return "navigation/home";
+	@RequestMapping(value="/{root}")
+	public String displayPage(@PathVariable(name = "root") String root) {
+		return "navigation/root";
 	}
 
 
