@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class RootController {
 	
-	private final static String[] TOPICS = {"dance", "it"};
-	
+		
 	@ModelAttribute("topics")
     public List<String> initTopics() {
-        return Arrays.asList(TOPICS);
+        return Arrays.asList(TopicController.TOPICS);
     }
 
 	@RequestMapping(value="/{root}")

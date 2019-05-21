@@ -1,5 +1,6 @@
 package pl.kwi.chrisblog.controllers.navigation;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,27 +12,34 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class TopicController {
 	
-	private final static String TOPIC_DANCE = "dance";
-	private final static String TOPIC_IT = "it";
-	private final static String[] TYPES_DANCE = {"salsa", "bachata", "kizomba"};
-	private final static String[] TYPES_IT = {"java"};
+	public final static String[] TOPICS = {"dance", "it"};
 	
 	@ModelAttribute("types")
-    public List<String> initTopics(@PathVariable(name = "topic") String topic) {
-		
-		if (TOPIC_DANCE.equals(topic)) {
-			return Arrays.asList(TYPES_DANCE);
-		} else if (TOPIC_IT.equals(topic)) {
-			return Arrays.asList(TYPES_IT);
-		} else {
-			throw new IllegalArgumentException("Problem with Topic");
-		}
-		
+    public List<String> initTopics(@PathVariable(name = "topic") String topic) {		
+		return Arrays.asList(getTypes(topic));	
     }
 
 	@RequestMapping(value="/{root}/{topic}")
 	public String displayPage() {
 		return "navigation/topic";
 	}
-
+	
+	private String[] getTypes(String topic) {
+		
+		try {
+			for (String topicFromArray : TOPICS) {
+				if (topic.equals(topicFromArray)) {
+					String arrayName = ("TYPES_" + topicFromArray).toUpperCase();
+					Field field = TypeController.class.getField(arrayName);
+					return (String[])field.get(null);					
+				}
+			}
+		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+		
+	}
+ 
 }
