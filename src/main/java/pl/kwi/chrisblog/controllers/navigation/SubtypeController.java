@@ -1,5 +1,6 @@
 package pl.kwi.chrisblog.controllers.navigation;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,27 +14,33 @@ public class SubtypeController {
 	
 	public final static String[] SUBTYPES_SALSA = {"cubana", "la", "mambo"};
 	public final static String[] SUBTYPES_BACHATA = {"social", "sensual", "dominicana"};
-	public final static String[] SUBTYPES_KIZOMBA = {"social", "traditional", "urbankiz"};
+	public final static String[] SUBTYPES_KIZOMBA = {"socialkizz", "traditional", "urbankiz"};
 	public final static String[] SUBTYPES_JAVA = {"spring"};
 	
 	@ModelAttribute("titles")
-    public List<String> initTopics(@PathVariable(name = "title") String title) {
+    public List<String> initTopics(@PathVariable(name = "subtype") String subtype) {
 		
-//		if (TOPIC_DANCE.equals(topic)) {
-//			return Arrays.asList(SUBTYPES_DANCE);
-//		} else if (TOPIC_IT.equals(topic)) {
-//			return Arrays.asList(SUBTYPES_IT);
-//		} else {
-//			throw new IllegalArgumentException("Problem with Type");
-//		}
-		
-		return null;
+		return Arrays.asList(getTitles(subtype));
 		
     }
 
 	@RequestMapping(value="/{root}/{topic}/{type}/{subtype}")
 	public String displayPage() {
 		return "navigation/subtype";
+	}
+	
+	private String[] getTitles(String subtype) {
+		
+		try {			
+			String arrayName = ("TITLES_" + subtype).toUpperCase();
+			Field field = TitleController.class.getField(arrayName);
+			return (String[])field.get(null);					
+		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+		
 	}
 
 }
