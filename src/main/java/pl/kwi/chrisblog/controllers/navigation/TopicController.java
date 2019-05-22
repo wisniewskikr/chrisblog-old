@@ -26,14 +26,10 @@ public class TopicController {
 	
 	private String[] getTypes(String topic) {
 		
-		try {
-			for (String topicFromArray : TOPICS) {
-				if (topic.equals(topicFromArray)) {
-					String arrayName = ("TYPES_" + topicFromArray).toUpperCase();
-					Field field = TypeController.class.getField(arrayName);
-					return (String[])field.get(null);					
-				}
-			}
+		try {			
+			String arrayName = ("TYPES_" + topic).toUpperCase();
+			Field field = TypeController.class.getField(arrayName);
+			return (String[])field.get(null);					
 		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
 			e.printStackTrace();
 		}

@@ -1,5 +1,6 @@
 package pl.kwi.chrisblog.controllers.navigation;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,24 +15,31 @@ public class TypeController {
 	public final static String[] TYPES_DANCE = {"salsa", "bachata", "kizomba"};
 	public final static String[] TYPES_IT = {"java"};
 	
-	@ModelAttribute("types")
-    public List<String> initTopics(@PathVariable(name = "topic") String topic) {
+	@ModelAttribute("subtypes")
+    public List<String> initTopics(@PathVariable(name = "type") String type) {
 		
-//		if (TOPIC_DANCE.equals(topic)) {
-//			return Arrays.asList(SUBTYPES_DANCE);
-//		} else if (TOPIC_IT.equals(topic)) {
-//			return Arrays.asList(SUBTYPES_IT);
-//		} else {
-//			throw new IllegalArgumentException("Problem with Type");
-//		}
-		
-		return null;
+		return Arrays.asList(getSubtypes(type));	
 		
     }
 
 	@RequestMapping(value="/{root}/{topic}/{type}")
 	public String displayPage() {
-		return "navigation/topic";
+		return "navigation/type";
 	}
+	
+	private String[] getSubtypes(String type) {
+		
+		try {			
+			String arrayName = ("SUBTYPES_" + type).toUpperCase();
+			Field field = SubtypeController.class.getField(arrayName);
+			return (String[])field.get(null);					
+		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+		
+	}
+	
 
 }
