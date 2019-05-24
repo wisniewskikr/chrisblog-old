@@ -18,10 +18,8 @@ public class SubtypeController {
 	public final static String[] SUBTYPES_JAVA = {"spring"};
 	
 	@ModelAttribute("titles")
-    public List<String> initTopics(@PathVariable(name = "subtype") String subtype) {
-		
+    public List<String> initTitles(@PathVariable(name = "subtype") String subtype) {
 		return Arrays.asList(getTitles(subtype));
-		
     }
 
 	@RequestMapping(value="/{root}/{topic}/{type}/{subtype}")

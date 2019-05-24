@@ -16,10 +16,8 @@ public class TypeController {
 	public final static String[] TYPES_IT = {"java"};
 	
 	@ModelAttribute("subtypes")
-    public List<String> initTopics(@PathVariable(name = "type") String type) {
-		
+    public List<String> initSubtypes(@PathVariable(name = "type") String type) {
 		return Arrays.asList(getSubtypes(type));	
-		
     }
 
 	@RequestMapping(value="/{root}/{topic}/{type}")

@@ -15,7 +15,7 @@ public class TopicController {
 	public final static String[] TOPICS = {"dance", "it"};
 	
 	@ModelAttribute("types")
-    public List<String> initTopics(@PathVariable(name = "topic") String topic) {		
+    public List<String> initTypes(@PathVariable(name = "topic") String topic) {		
 		return Arrays.asList(getTypes(topic));	
     }
 
