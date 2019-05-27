@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pl.kwi.chrisblog.controllers.AbstrController;
+
 @Controller
-public class TopicController {
+public class TopicController extends AbstrController {
 	
 	public final static String[] TOPICS = {"dance", "it"};
 	
@@ -19,7 +21,7 @@ public class TopicController {
 		return Arrays.asList(getTypes(topic));	
     }
 
-	@RequestMapping(value="/{root}/{topic}")
+	@RequestMapping(value="/{topic}")
 	public String displayPage() {
 		return "navigation/topic";
 	}

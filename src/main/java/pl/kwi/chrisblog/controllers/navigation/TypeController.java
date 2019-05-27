@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pl.kwi.chrisblog.controllers.AbstrController;
+
 @Controller
-public class TypeController {
+public class TypeController extends AbstrController {
 	
 	public final static String[] TYPES_DANCE = {"salsa", "bachata", "kizomba"};
 	public final static String[] TYPES_IT = {"java"};
@@ -20,7 +22,7 @@ public class TypeController {
 		return Arrays.asList(getSubtypes(type));	
     }
 
-	@RequestMapping(value="/{root}/{topic}/{type}")
+	@RequestMapping(value="/{topic}/{type}")
 	public String displayPage() {
 		return "navigation/type";
 	}

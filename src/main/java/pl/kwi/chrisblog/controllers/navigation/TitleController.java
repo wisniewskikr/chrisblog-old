@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pl.kwi.chrisblog.controllers.AbstrController;
+
 @Controller
 @PropertySource("classpath:titles/titles_cubana.properties")
-public class TitleController {
+public class TitleController extends AbstrController {
 	
 	public final static String[] TITLES_CUBANA = {"1", "2", "3"};
 	public final static String[] TITLES_LA = {"1", "2", "3"};
@@ -39,7 +41,7 @@ public class TitleController {
 		return env.getProperty(title  + ".description");
     }
 
-	@RequestMapping(value="/{root}/{topic}/{type}/{subtype}/{title}")
+	@RequestMapping(value="/{topic}/{type}/{subtype}/{title}")
 	public String displayPage() {
 		return "navigation/title";
 	}

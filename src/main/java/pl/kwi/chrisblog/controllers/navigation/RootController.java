@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pl.kwi.chrisblog.controllers.AbstrController;
+
 @Controller
-public class RootController {
+public class RootController extends AbstrController {
 	
 		
 	@ModelAttribute("topics")
@@ -16,7 +18,7 @@ public class RootController {
         return Arrays.asList(TopicController.TOPICS);
     }
 
-	@RequestMapping(value="/{root}")
+	@RequestMapping
 	public String displayPage() {
 		return "navigation/root";
 	}

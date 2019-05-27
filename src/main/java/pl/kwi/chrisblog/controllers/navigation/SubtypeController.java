@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import pl.kwi.chrisblog.controllers.AbstrController;
+
 @Controller
-public class SubtypeController {
+public class SubtypeController extends AbstrController {
 	
 	public final static String[] SUBTYPES_SALSA = {"cubana", "la", "mambo"};
 	public final static String[] SUBTYPES_BACHATA = {"social", "sensual", "dominicana"};
@@ -22,7 +24,7 @@ public class SubtypeController {
 		return Arrays.asList(getTitles(subtype));
     }
 
-	@RequestMapping(value="/{root}/{topic}/{type}/{subtype}")
+	@RequestMapping(value="/{topic}/{type}/{subtype}")
 	public String displayPage() {
 		return "navigation/subtype";
 	}
